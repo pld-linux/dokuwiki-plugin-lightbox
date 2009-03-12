@@ -1,16 +1,13 @@
 --- ./script.js	2009-03-12 01:44:39.267256244 +0200
 +++ ./script.js	2008-08-08 21:38:32.000000000 +0300
-@@ -5581,13 +5581,16 @@
+@@ -5581,13 +5581,13 @@
  //  Configurationl
  //
  LightboxOptions = Object.extend({
 -    fileLoadingImage:        'images/loading.gif',     
 -    fileBottomNavCloseImage: 'images/closelabel.gif',
-+// EDITED for Dokuwiki plugin
 +    fileLoadingImage:        'lib/plugins/lightbox/images/loading.gif',     
-+//    fileLoadingImage:        'images/loading.gif',
 +    fileBottomNavCloseImage: 'lib/plugins/lightbox/images/closelabel.gif',
-+//    fileBottomNavCloseImage: 'images/closelabel.gif',
  
      overlayOpacity: 0.8,   // controls transparency of shadow overlay
  
@@ -20,19 +17,16 @@
  
      borderSize: 10,         //if you adjust the padding in the CSS, you will need to update this variable
  
-@@ -5723,7 +5726,10 @@
+@@ -5723,7 +5723,7 @@
          this.updateImageList = Prototype.emptyFunction;
  
          document.observe('click', (function(event){
 -            var target = event.findElement('a[rel^=lightbox]') || event.findElement('area[rel^=lightbox]');
-+            // EDITED for Dokuwiki
-+            // TODO...
-+            //var target = event.findElement('a[rel^=lightbox]') || event.findElement('area[rel^=lightbox]');
 +            var target = event.findElement('a[class^=media]:not([class~=mediafile])') || event.findElement('area[class^=media]:not([class~=mediafile])');
              if (target) {
                  event.stop();
                  this.start(target);
-@@ -5748,18 +5754,22 @@
+@@ -5748,18 +5748,20 @@
          this.imageArray = [];
          var imageNum = 0;       
  
@@ -40,8 +34,6 @@
 -            // if image is NOT part of a set, add single image to imageArray
 -            this.imageArray.push([imageLink.href, imageLink.title]);         
 -        } else {
-+        // EDITED for Dokuwiki
-+        // TODO...
 +        //if ((imageLink.rel == 'lightbox')){
 +        //     if image is NOT part of a set, add single image to imageArray
 +        //    this.imageArray.push([imageLink.href, imageLink.title]);         
@@ -64,27 +56,18 @@
          var arrayPageScroll = document.viewport.getScrollOffsets();
 --- ./css/lightbox.css	2008-03-10 06:57:10.000000000 +0200
 +++ ./css/lightbox.css	2008-08-07 23:47:50.000000000 +0300
-@@ -10,11 +10,20 @@
+@@ -10,11 +10,11 @@
  #imageContainer>#hoverNav{ left: 0;}
  #hoverNav a{ outline: none;}
  
 -#prevLink, #nextLink{ width: 49%; height: 100%; background-image: url(data:image/gif;base64,AAAA); /* Trick IE into showing hover */ display: block; }
-+/*
-+Modif DOKUWIKI
-+#prevLink, #nextLink{ width: 49%; height: 100%; background-image: url(data:image/gif;base64,AAAA); \* Trick IE into showing hover \*display: block; }
-+*/
 +#prevLink, #nextLink{ width: 49%; height: 100%; background: transparent url(images/blank.gif) no-repeat; /* Trick IE into showing hover */ display: block; }
  #prevLink { left: 0; float: left;}
  #nextLink { right: 0; float: right;}
 -#prevLink:hover, #prevLink:visited:hover { background: url(../images/prevlabel.gif) left 15% no-repeat; }
 -#nextLink:hover, #nextLink:visited:hover { background: url(../images/nextlabel.gif) right 15% no-repeat; }
-+/*
-+Modif DOKUWIKI
-+#prevLink:hover, #prevLink:visited:hover { background: url(../images/prev.gif) left 15% no-repeat; }
-+#nextLink:hover, #nextLink:visited:hover { background: url(../images/next.gif) right 15% no-repeat; }
-+*/
-+#prevLink:hover, #prevLink:visited:hover { background: url(images/prev.gif) left 15% no-repeat; }
-+#nextLink:hover, #nextLink:visited:hover { background: url(images/next.gif) right 15% no-repeat; }
++#prevLink:hover, #prevLink:visited:hover { background: url(images/prevlabel.gif) left 15% no-repeat; }
++#nextLink:hover, #nextLink:visited:hover { background: url(images/nextlabel.gif) right 15% no-repeat; }
  
  #imageDataContainer{ font: 10px Verdana, Helvetica, sans-serif; background-color: #fff; margin: 0 auto; line-height: 1.4em; overflow: auto; width: 100%	; }
  
