@@ -1,0 +1,11 @@
+--- lightbox/script.js~	2009-03-12 03:00:14.000000000 +0200
++++ lightbox/script.js	2009-03-12 03:00:15.750346833 +0200
+@@ -12,7 +12,7 @@
+   Browser: {
+     IE:     !!(window.attachEvent && !window.opera),
+     Opera:  !!window.opera,
+-    WebKit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
++    WebKit: navigator.userAgent.indexOf('AppleWebKit/') > -1 || navigator.userAgent.indexOf('KHTML') > -1,
+     Gecko:  navigator.userAgent.indexOf('Gecko') > -1 && navigator.userAgent.indexOf('KHTML') == -1,
+     MobileSafari: !!navigator.userAgent.match(/Apple.*Mobile.*Safari/)
+   },
