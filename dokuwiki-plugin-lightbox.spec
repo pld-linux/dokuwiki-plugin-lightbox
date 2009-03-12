@@ -3,7 +3,7 @@ Summary:	DokuWiki Light Box v2 plugin
 Summary(pl.UTF-8):	Wtyczka lightboxv2 dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
 Version:	20080808
-Release:	1.3
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://www.lokeshdhakar.com/projects/lightbox2/releases/lightbox2.04.zip
@@ -26,9 +26,8 @@ Plugin to integrate LightBox v2 javascript animation in DokuWiki.
 %setup -qc -n %{plugin}
 (
 	cat js/prototype.js
-	cat js/scriptaculous.js
-	cat js/builder.js
 	cat js/effects.js
+	cat js/builder.js
 	cat js/lightbox.js
 ) > script.js
 %patch0 -p1
