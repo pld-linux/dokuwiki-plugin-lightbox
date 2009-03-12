@@ -1,5 +1,5 @@
---- lightbox~/js/lightbox.js	2008-03-10 06:57:43.000000000 +0200
-+++ lightbox/js/lightbox.js	2009-03-12 22:18:36.369854061 +0200
+--- lightbox/js/lightbox.js	2009-03-12 22:18:36.369854061 +0200
++++ lightbox/js/lightbox.js	2009-03-12 22:15:26.021123357 +0200
 @@ -46,13 +46,13 @@
  //  Configurationl
  //
@@ -26,7 +26,7 @@
              if (target) {
                  event.stop();
                  this.start(target);
-@@ -213,18 +213,20 @@
+@@ -213,18 +213,12 @@
          this.imageArray = [];
          var imageNum = 0;       
  
@@ -34,23 +34,20 @@
 -            // if image is NOT part of a set, add single image to imageArray
 -            this.imageArray.push([imageLink.href, imageLink.title]);         
 -        } else {
-+        //if ((imageLink.rel == 'lightbox')){
-+        //     if image is NOT part of a set, add single image to imageArray
-+        //    this.imageArray.push([imageLink.href, imageLink.title]);         
-+        //} else {
-             // if image is part of a set..
-             this.imageArray = 
+-            // if image is part of a set..
+-            this.imageArray = 
 -                $$(imageLink.tagName + '[href][rel="' + imageLink.rel + '"]').
 -                collect(function(anchor){ return [anchor.href, anchor.title]; }).
-+                //$$(imageLink.tagName + '[href][rel="' + imageLink.rel + '"]').
-+                $$(imageLink.tagName + '[href][class="media"]').
-+                //collect(function(anchor){ return [anchor.href, anchor.title]; }).
-+                collect(function(anchor){ return [anchor.href, anchor.firstChild.getAttribute('title')]; }).
-                 uniq();
-             
-             while (this.imageArray[imageNum][0] != imageLink.href) { imageNum++; }
+-                uniq();
+-            
+-            while (this.imageArray[imageNum][0] != imageLink.href) { imageNum++; }
 -        }
-+        //}
++        this.imageArray = 
++            $$(imageLink.tagName + '[href][class="media"]').
++            collect(function(anchor){ return [anchor.href, anchor.firstChild.getAttribute('title')]; }).
++            uniq();
++        
++        while (this.imageArray[imageNum][0] != imageLink.href) { imageNum++; }
  
          // calculate top and left offset for the lightbox 
          var arrayPageScroll = document.viewport.getScrollOffsets();
