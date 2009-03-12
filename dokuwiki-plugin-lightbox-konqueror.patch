@@ -1,5 +1,5 @@
---- lightbox/script.js~	2009-03-12 03:00:14.000000000 +0200
-+++ lightbox/script.js	2009-03-12 03:00:15.750346833 +0200
+--- lightbox/js/prototype.js~	2009-03-12 03:00:14.000000000 +0200
++++ lightbox/js/prototype.js	2009-03-12 03:00:15.750346833 +0200
 @@ -12,7 +12,7 @@
    Browser: {
      IE:     !!(window.attachEvent && !window.opera),
