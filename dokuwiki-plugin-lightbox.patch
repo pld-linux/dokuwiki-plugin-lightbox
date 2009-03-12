@@ -1,6 +1,6 @@
---- ./js/lightbox.js	2009-03-12 01:44:39.267256244 +0200
-+++ ./js/lightbox.js	2008-08-08 21:38:32.000000000 +0300
-@@ -5581,13 +5581,13 @@
+--- lightbox~/js/lightbox.js	2008-03-10 06:57:43.000000000 +0200
++++ lightbox/js/lightbox.js	2009-03-12 22:18:36.369854061 +0200
+@@ -46,13 +46,13 @@
  //  Configurationl
  //
  LightboxOptions = Object.extend({
@@ -17,7 +17,7 @@
  
      borderSize: 10,         //if you adjust the padding in the CSS, you will need to update this variable
  
-@@ -5723,7 +5723,7 @@
+@@ -188,7 +188,7 @@
          this.updateImageList = Prototype.emptyFunction;
  
          document.observe('click', (function(event){
@@ -26,7 +26,7 @@
              if (target) {
                  event.stop();
                  this.start(target);
-@@ -5748,18 +5748,20 @@
+@@ -213,18 +213,20 @@
          this.imageArray = [];
          var imageNum = 0;       
  
@@ -54,8 +54,8 @@
  
          // calculate top and left offset for the lightbox 
          var arrayPageScroll = document.viewport.getScrollOffsets();
---- ./css/lightbox.css	2008-03-10 06:57:10.000000000 +0200
-+++ ./css/lightbox.css	2008-08-07 23:47:50.000000000 +0300
+--- lightbox~/css/lightbox.css	2008-03-10 06:57:10.000000000 +0200
++++ lightbox/css/lightbox.css	2009-03-12 22:18:36.369854061 +0200
 @@ -10,11 +10,11 @@
  #imageContainer>#hoverNav{ left: 0;}
  #hoverNav a{ outline: none;}
