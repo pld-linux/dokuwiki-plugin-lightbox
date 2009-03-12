@@ -1,0 +1,11 @@
+--- lightbox/js/prototype.js~	2008-03-10 06:57:43.000000000 +0200
++++ lightbox/js/prototype.js	2009-03-12 03:52:02.059829741 +0200
+@@ -2969,7 +2969,7 @@
+     pseudo:
+ /^:((first|last|nth|nth-last|only)(-child|-of-type)|empty|checked|(en|dis)abled|not)(\((.*?)\))?(\b|$|(?=\s|[:+~>]))/,
+     attrPresence: /^\[([\w]+)\]/,
+-    attr:         /\[((?:[\w-]*:)?[\w-]+)\s*(?:([!^$*~|]?=)\s*((['"])([^\4]*?)\4|([^'"][^\]]*?)))?\]/
++    attr:         /\[((?:[\w-]*:)?[\w-]+)\s*(?:([!^$*~|]?=)\s*(([\x27"])([^\4]*?)\4|([^'"][^\]]*?)))?\]/
+   },
+ 
+   // for Selector.match and Element#match
