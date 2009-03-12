@@ -38,12 +38,27 @@ Plugin to integrate LightBox v2 javascript animation in DokuWiki.
 	cat js/lightbox.js
 ) > script.js
 uudecode blank.gif.uue
+chmod a+r images/blank.gif
+chmod a-x css/lightbox.css
 
 rm -f images/bullet.gif
 rm -f images/donate-button.gif
 rm -f images/download-icon.gif
 rm -f images/image-1.jpg
 rm -f images/thumb-1.jpg
+
+cat <<'EOF' > AUTHORS
+ogeidix <diegogiorgini#gmail.com>
+ - the original plugin
+
+Laurent Beneytout <laurent.beneytout#gmail.com>
+ - made plugin work by remaking the plugin
+
+Elan Ruusamäe <glen#pld-linux.org>
+ - made plugin work with konqueror
+ - made plugin work with compression enabled
+EOF
+awk -vv=%{version} 'BEGIN{printf("%s-%s-%s\n", substr(v, 1, 4), substr(v, 5, 2), substr(v, 7, 2))}' > VERSION
 
 %build
 js_compress() {
@@ -63,6 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{plugindir}
 cp -a images script.js $RPM_BUILD_ROOT%{plugindir}
 cp -a css/lightbox.css $RPM_BUILD_ROOT%{plugindir}/screen.css
+cp -a AUTHORS VERSION $RPM_BUILD_ROOT%{plugindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -75,6 +91,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS
 %dir %{plugindir}
 %{plugindir}/*.css
 %{plugindir}/*.js
