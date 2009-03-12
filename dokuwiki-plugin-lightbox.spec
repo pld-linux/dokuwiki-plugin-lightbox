@@ -3,7 +3,7 @@ Summary:	DokuWiki Light Box v2 plugin
 Summary(pl.UTF-8):	Wtyczka lightboxv2 dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
 Version:	20090312
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	http://www.lokeshdhakar.com/projects/lightbox2/releases/lightbox2.04.zip
@@ -15,7 +15,7 @@ URL:		http://wiki.splitbrain.org/plugin:lightboxv2
 BuildRequires:	js
 BuildRequires:	sharutils
 BuildRequires:	shrinksafe
-Requires:	dokuwiki >= 20061106
+Requires:	dokuwiki >= 20090214-2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
