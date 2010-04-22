@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	pack		# disable packing of js
+
 %define		plugin		lightbox
 Summary:	DokuWiki Light Box v2 plugin
 Summary(pl.UTF-8):	Wtyczka lightboxv2 dla DokuWiki
@@ -14,7 +18,7 @@ Patch2:		%{name}-dw-jscompress.patch
 URL:		http://wiki.splitbrain.org/plugin:lightboxv2
 BuildRequires:	js
 BuildRequires:	sharutils
-BuildRequires:	shrinksafe
+%{?with_pack:BuildRequires:	shrinksafe}
 Requires:	dokuwiki >= 20090214-2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -71,7 +75,9 @@ js_compress() {
 		js -C -f script.js
 	done
 }
+%if %{with pack}
 js_compress script.js
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
