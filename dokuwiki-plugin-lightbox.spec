@@ -3,11 +3,11 @@ Summary:	DokuWiki Light Box v2 plugin
 Summary(pl.UTF-8):	Wtyczka lightboxv2 dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
 Version:	20090312
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	http://glen.alkohol.ee/pld/lightbox-%{version}.tar.bz2
-# Source0-md5:	7c9c54566b14175b9626e7a6f8ba5ee5
+Source0:	https://github.com/downloads/glensc/dokuwiki-plugin-lightboxv2/lightboxv2-%{version}.tar.bz2
+# Source0-md5:	52c942d8a13833e59141349fc15e124f
 URL:		http://wiki.splitbrain.org/plugin:lightboxv2
 Requires:	dokuwiki >= 20061106
 BuildArch:	noarch
@@ -21,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Plugin to integrate LightBox v2 javascript animation in DokuWiki.
 
 %prep
-%setup -q -n %{plugin}
+%setup -q -n %{plugin}v2
 version=$(cat VERSION)
 if [ $(echo "$version" | tr -d -) != %{version} ]; then
 	: %%{version} mismatch, should be: $(echo "$version" | tr -d -)
