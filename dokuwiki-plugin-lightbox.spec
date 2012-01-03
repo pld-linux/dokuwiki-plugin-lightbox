@@ -1,15 +1,15 @@
 %define		plugin		lightbox
-Summary:	DokuWiki Light Box v2 plugin
-Summary(pl.UTF-8):	Wtyczka lightboxv2 dla DokuWiki
+Summary:	DokuWiki Lightbox plugin
+Summary(pl.UTF-8):	Wtyczka lightbox dla DokuWiki
 Name:		dokuwiki-plugin-%{plugin}
-Version:	20090312
-Release:	3
+Version:	20120103
+Release:	1
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	https://github.com/downloads/glensc/dokuwiki-plugin-lightboxv2/lightboxv2-%{version}.tar.bz2
-# Source0-md5:	52c942d8a13833e59141349fc15e124f
-URL:		http://wiki.splitbrain.org/plugin:lightboxv2
-Requires:	dokuwiki >= 20061106
+Source0:	https://github.com/downloads/glensc/dokuwiki-plugin-lightboxv2/lightbox-%{version}.tar.bz2
+# Source0-md5:	5e2d78e8eaeb03288ff838be23214c7d
+URL:		http://www.dokuwiki.org/plugin:lightboxv2
+Requires:	dokuwiki >= 20111110
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -18,10 +18,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		plugindir	%{dokudir}/lib/plugins/%{plugin}
 
 %description
-Plugin to integrate LightBox v2 javascript animation in DokuWiki.
+Plugin to integrate Lightbox JavaScript animation in DokuWiki.
 
 %prep
-%setup -q -n %{plugin}v2
+%setup -qc
+mv %{plugin}/* .
+
 version=$(cat VERSION)
 if [ $(echo "$version" | tr -d -) != %{version} ]; then
 	: %%{version} mismatch, should be: $(echo "$version" | tr -d -)
